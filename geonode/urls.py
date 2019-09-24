@@ -58,7 +58,7 @@ sitemaps = {
 
 urlpatterns = [
     url(r'^$',
-        TemplateView.as_view(template_name='index.html'),
+        TemplateView.as_view(template_name='Home/index.html'),
         name='home'),
     url(r'^help/$',
         TemplateView.as_view(template_name='help.html'),

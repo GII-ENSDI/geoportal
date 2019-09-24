@@ -32,7 +32,25 @@ services:
       - geoserver-data-dir:/geoserver_data/data
     env_file:
       - ./scripts/docker/env/${SET_DOCKER_ENV}/geoserver.env
+  
+  # pgadmin4:
+  #   image: dpage/pgadmin4
+  #   restart: unless-stopped
+  #   container_name: pgadmin4${COMPOSE_PROJECT_NAME}
+  #   stdin_open: true
+  #   # tty: true
+  #   environment:
+  #       PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+  #       PGADMIN_DEFAULT_PASSWORD: admin
+  #   depends_on:
+  #     - db
+  #     # - data-dir-conf
+  #   volumes:
+  #     - postgres-data
+  #   ports:
+  #     - "5555:80"
 
+  
   django:
     restart: unless-stopped
     image: geonode/geonode:latest
@@ -92,3 +110,6 @@ volumes:
     name: ${COMPOSE_PROJECT_NAME}-dbbackups
   rabbitmq:
     name: ${COMPOSE_PROJECT_NAME}-rabbitmq
+  # pgadmin4:
+  #   name: ${COMPOSE_PROJECT_NAME}-pgadmin4
+  
